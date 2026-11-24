@@ -18,7 +18,12 @@ LAST_WORDS = (
 
 
 def validate_last_words(text: str) -> str:
-    """Return the line if it passes the gate, else raise ValueError."""
+    """Return the line if it passes the gate, else raise ValueError.
+
+    The gate is the bounty gate: 1-199 characters, a single line, not only
+    whitespace. The line itself is written to end on its punch
+    ("to the cloud with me"), so validation must never trim or rewrap it.
+    """
     if not text.strip():
         raise ValueError("last words must not be blank")
     if not 1 <= len(text) <= 199:
